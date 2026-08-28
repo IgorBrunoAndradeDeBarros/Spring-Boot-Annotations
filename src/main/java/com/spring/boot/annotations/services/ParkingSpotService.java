@@ -2,6 +2,7 @@ package com.spring.boot.annotations.services;
 
 import com.spring.boot.annotations.models.ParkingSpotModel;
 import com.spring.boot.annotations.repositories.ParkingSpotRepository;
+import com.spring.boot.annotations.utils.ParkingSpotFormatter;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,13 +15,18 @@ import java.util.UUID;
 public class ParkingSpotService {
 
     final ParkingSpotRepository parkingSpotRepository;
+    final ParkingSpotFormatter parkingSpotFormatter;
 
-    public ParkingSpotService(ParkingSpotRepository parkingSpotRepository) {
+    public ParkingSpotService(ParkingSpotRepository parkingSpotRepository,
+                              ParkingSpotFormatter parkingSpotFormatter) {
         this.parkingSpotRepository = parkingSpotRepository;
+        this.parkingSpotFormatter = parkingSpotFormatter;
     }
 
     @Transactional
     public ParkingSpotModel save(ParkingSpotModel parkingSpotModel) {
+        String formattedNumber = parkingSpotFormatter.formatCode(parkingSpotModel.getParkingSpotNumber());
+        parkingSpotModel.setParkingSpotNumber(formattedNumber);
         return parkingSpotRepository.save(parkingSpotModel);
     }
 
