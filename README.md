@@ -4,13 +4,14 @@ Guia de estudo das principais anotações do Spring / Spring Boot.
 
 ### Dependências no Spring Initializr:
 
-- [ ] Spring Web
-- [ ] Spring Data JPA
-- [ ] Validation
-- [ ] Lombok
-- [ ] Spring Boot DevTools
-- [ ] H2 Database
-- [ ] MySQL Driver
+- [x] Spring Web
+- [x] Spring Data JPA
+- [x] Validation
+- [x] Lombok
+- [x] Spring Boot DevTools
+- [x] H2 Database
+- [x] MySQL Driver
+- [x] Jackson Datatype JSR310 (`jackson-datatype-jsr310`) — necessário para `LocalDate`/`LocalDateTime` (não vem por padrão no Initializr, adicionar manualmente no pom.xml/build.gradle)
 
 ---
 
